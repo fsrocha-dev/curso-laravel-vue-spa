@@ -21,4 +21,27 @@ class UserController extends Controller
 
         return response()->json(['error' => 'Unauthorized'], 401);
     }
+
+    public function register(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+
+        $input['password'] = bcrypt($input['password']);
+
+        $user = User::create($input);
+        $success['token'] = $user->createToken('MyApp')->accessToken;
+        $success['name'] = $user->name;
+
+        return response()->json(['success' => $success]);
+    }
 }
