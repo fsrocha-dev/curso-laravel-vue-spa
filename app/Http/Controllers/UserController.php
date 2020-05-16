@@ -44,4 +44,9 @@ class UserController extends Controller
 
         return response()->json(['success' => $success]);
     }
+
+    public function getDetails()
+    {
+        return response()->json(['success' => Auth::user()]);
+    }
 }
