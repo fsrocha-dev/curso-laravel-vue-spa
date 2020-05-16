@@ -15,6 +15,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/login', 'UserController@login');
 Route::get('/register', 'UserController@register');
 
-Route::resource('/taks', 'TaskController');
-Route::get('/category/{category}/tasks', 'CategoryController@tasks');
-Route::resource('/category', 'CategoryController');
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::resource('/taks', 'TaskController');
+    Route::get('/category/{category}/tasks', 'CategoryController@tasks');
+    Route::resource('/category', 'CategoryController');
+});
