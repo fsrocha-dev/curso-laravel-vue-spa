@@ -18,21 +18,18 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        $category = Category::create($request->only('name'));
+
+        return response()->json([
+            'status' => (bool) $category,
+            'message' => $category ? 'Category Created' : 'Error Creating Category',
+        ]);
     }
 
     /**
