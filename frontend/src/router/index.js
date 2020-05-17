@@ -3,9 +3,9 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Dashboard from './views/Board'
-import Login from './views/Login'
-import Register from './views/Register'
+import Dashboard from '../views/Board'
+import Login from '../views/Login'
+import Register from '../views/Register'
 import Welcome from '../views/Welcome'
 
 const router = new VueRouter({
