@@ -103,7 +103,7 @@ export default {
             localStorage.setItem("user", response.data.success.name);
             localStorage.setItem("user_id", response.data.success.user_id);
             localStorage.setItem("jwt", response.data.success.token);
-            this.router.push({ name: "board" });
+            this.$router.push({ name: "board" });
           })
           .catch(error => {
             console.error("HandleSubmit: ", error);
