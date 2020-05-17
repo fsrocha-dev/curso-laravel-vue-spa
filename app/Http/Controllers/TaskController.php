@@ -14,6 +14,7 @@ class TaskController extends Controller
      */
     public function index()
     {
+        return response()->json(Task::all()->toArray());
     }
 
     /**
