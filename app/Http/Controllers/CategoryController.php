@@ -48,21 +48,18 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
-    {
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Category $category)
     {
+        $status = $category->update($request->all());
+
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Category Updated' : 'Error Updating Category',
+        ]);
     }
 
     /**
@@ -72,5 +69,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $status = $category->delete();
+
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Category Deleted' : 'Error Deleting Category',
+        ]);
     }
 }
