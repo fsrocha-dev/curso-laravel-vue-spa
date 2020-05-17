@@ -65,7 +65,13 @@ export default {
   },
   methods: {
     addNew(id) {},
-    loadTasks() {},
+    loadTasks() {
+      this.categories.map(category => {
+        this.$http.get(`api/category/${category.id}/tasks`).then(response => {
+          category.tasks = response.data;
+        });
+      });
+    },
     changeOrder(data) {},
     endEditing(task) {},
     editTask(task) {
