@@ -18,15 +18,6 @@ class TaskController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @return \Illuminate\Http\Response
@@ -40,13 +31,11 @@ class TaskController extends Controller
             'order' => $request->order,
         ]);
 
-        $data = [
+        return response()->json([
             'data' => $task,
             'status' => (bool) $task,
             'message' => $task ? 'Task Created!' : 'Error Creating Task',
-        ];
-
-        return response()->json($data);
+        ]);
     }
 
     /**
@@ -56,6 +45,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
+        return response()->json($task);
     }
 
     /**
