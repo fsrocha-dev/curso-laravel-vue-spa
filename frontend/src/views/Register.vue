@@ -92,7 +92,7 @@ export default {
         this.password === this.password_confirmation &&
         this.password.length > 0
       ) {
-        axios
+        this.$http
           .post("api/register", {
             name: this.name,
             email: this.email,
