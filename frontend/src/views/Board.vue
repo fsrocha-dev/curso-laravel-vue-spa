@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <draggable element="div" class="col-md-12" v-model="categories" :options="dragOptions">
         <transition-group class="row">
-          <div class="col-md-4" v-for="element,index in categories" :key="element.id">
+          <div class="col-md-4" v-for="(element, index) in categories" :key="element.id">
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">{{element.name}}</h4>
@@ -17,8 +17,9 @@
                 >
                   <transition-group :id="element.id">
                     <div
-                      v-for="task,index in element.tasks"
+                      v-for="(task, index) in element.tasks"
                       :key="task.category_id+','+task.order"
+                      :name="index"
                       class="transit-1"
                       :id="task.id"
                     >
@@ -65,7 +66,7 @@ export default {
   },
   methods: {
     addNew(id) {
-      let user_id = 1;
+      let user_id = localStorage.getItem("user_id");
       let name = "New task";
       let category_id = this.categories[id].id;
       let order = this.categories[id].tasks.length;
@@ -94,7 +95,7 @@ export default {
         this.$http
           .patch(`api/task/${task_id}`, { order, category_id })
           .then(response => {
-            // Do anything you want here
+            console.log(response);
           });
       }
     },
@@ -104,7 +105,7 @@ export default {
       this.$http
         .patch(`api/task/${task.id}`, { name: task.name })
         .then(response => {
-          // You can do anything you wan't here.
+          console.log(response);
         });
     },
     editTask(task) {

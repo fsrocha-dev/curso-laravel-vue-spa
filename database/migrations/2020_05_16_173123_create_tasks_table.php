@@ -16,6 +16,7 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
+            $table->integer('order');
             $table->timestamps();
             $table->softDeletes();
 
