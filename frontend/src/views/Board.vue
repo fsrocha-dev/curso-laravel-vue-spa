@@ -83,7 +83,21 @@ export default {
         });
       });
     },
-    changeOrder(data) {},
+    changeOrder(data) {
+      let toTask = data.to;
+      let fromTask = data.from;
+      let task_id = data.item.id;
+      let category_id = fromTask.id == toTask.id ? null : toTask.id;
+      let order = data.newIndex == data.oldIndex ? false : data.newIndex;
+
+      if (order !== false) {
+        this.$http
+          .patch(`api/task/${task_id}`, { order, category_id })
+          .then(response => {
+            // Do anything you want here
+          });
+      }
+    },
     endEditing(task) {
       this.editingTask = null;
 
