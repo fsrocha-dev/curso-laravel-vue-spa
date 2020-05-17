@@ -1,28 +1,76 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+      <div class="container">
+        <router-link :to="{name: 'home'}" class="navbar-brand">Treclon</router-link>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Left Side Of Navbar -->
+          <ul class="navbar-nav mr-auto"></ul>
+          <!-- Right Side Of Navbar -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-link">Hi, There</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="py-4">
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App"
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ <style scoped>
+.full-height {
+  height: 100vh;
+}
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.position-ref {
+  position: relative;
+}
+.top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+.content {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.title {
+  font-size: 60px;
+}
+.links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.m-b-md {
+  margin-bottom: 30px;
+  color: #000000;
 }
 </style>
