@@ -84,7 +84,15 @@ export default {
       });
     },
     changeOrder(data) {},
-    endEditing(task) {},
+    endEditing(task) {
+      this.editingTask = null;
+
+      this.$http
+        .patch(`api/task/${task.id}`, { name: task.name })
+        .then(response => {
+          // You can do anything you wan't here.
+        });
+    },
     editTask(task) {
       this.editingTask = task;
     }
