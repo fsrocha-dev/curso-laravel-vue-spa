@@ -72,7 +72,23 @@ export default {
       this.editingTask = task;
     }
   },
-  mounted() {},
+  mounted() {
+    let token = localStorage.getItem("jwt");
+
+    this.$http.defaults.headers.common["Content-Type"] = "application/json";
+    this.$http.defaults.headers.common["Authorization"] = "Bearer " + token;
+
+    this.$http.get("api/category").then(response => {
+      response.data.forEach(data => {
+        this.categories.push({
+          id: data.id,
+          name: data.name,
+          tasks: []
+        });
+      });
+      this.loadTasks();
+    });
+  },
   computed: {
     dragOptions() {
       return {
