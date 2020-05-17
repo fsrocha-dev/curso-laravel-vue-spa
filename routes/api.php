@@ -5,8 +5,8 @@
 | API Routes
 |--------------------------------------------------------------------------
 */
-Route::post('login', 'UserController@login')->name('login');
-Route::post('register', 'UserController@register')->name('register');
+Route::post('/login', 'UserController@login')->name('login');
+Route::post('/register', 'UserController@register')->name('register');
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('/task', 'TaskController');
