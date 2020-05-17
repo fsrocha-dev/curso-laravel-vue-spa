@@ -49,21 +49,20 @@ class TaskController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Task $task)
-    {
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Task $task)
     {
+        $status = $task->update(
+            $request->only(['name', 'category_id', 'user_id', 'order'])
+        );
+
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Task Updated' : 'Error Updating Task',
+        ]);
     }
 
     /**
