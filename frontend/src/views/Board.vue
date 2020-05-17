@@ -64,7 +64,18 @@ export default {
     };
   },
   methods: {
-    addNew(id) {},
+    addNew(id) {
+      let user_id = 1;
+      let name = "New task";
+      let category_id = this.categories[id].id;
+      let order = this.categories[id].tasks.length;
+
+      this.$http
+        .post("api/task", { user_id, name, order, category_id })
+        .then(response => {
+          this.categories[id].tasks.push(response.data.data);
+        });
+    },
     loadTasks() {
       this.categories.map(category => {
         this.$http.get(`api/category/${category.id}/tasks`).then(response => {
