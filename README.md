@@ -1,5 +1,5 @@
 # Making a Trello Clone with Laravel and Vuejs
-This is a demo application created for a course that was taught by min, which shows how to create a simple Trello clone using Laravel and Vue.
+This is a example application created for a course that was taught by me, which shows how to create a simple Trello clone using Laravel and Vue.
 
 ## Preview
 <p align="center">
